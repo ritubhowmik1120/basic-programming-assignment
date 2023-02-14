@@ -36,11 +36,19 @@ public class PopulationProjector {
      * Complete the assignment within this function.
      * 
      * @param args An array of any command-line arguments.  Java requires the main function include this, even if not used.
-     * @throws Exception Allows us to not worry about Exceptions in this function. Java requires the main functino include this, even if not used.
+     * @throws Exception Allows us to not worry about Exceptions in this function. Java requires the main function include this, even if not used.
      */
     public static void main(String[] args) throws Exception {
-        // complete this function to solve the problem
+        int startingPopulation = 332403650;
+        int birthsPerYear = 365 * 24 * 60 * 60 / 7;
+        int deathsPerYear = 365 * 24 * 60 * 60 / 13;
+        int immigrantsPerYear = 365 * 24 * 60 * 60 / 45;
+
+        System.out.println("Here are the projected population numbers for the next five years:");
+        for (int year = 2023; year <= 2027; year++) {
+            int newPopulation = startingPopulation + birthsPerYear - deathsPerYear + immigrantsPerYear;
+            System.out.println("- Year " + year + ": " + newPopulation);
+            startingPopulation = newPopulation;
+        }
     }
-
-
 }

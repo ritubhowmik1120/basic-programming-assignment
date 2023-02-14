@@ -29,11 +29,22 @@ public class RunningSpeedCalculator {
    * Use the System.out.println() function for all text output, not System.out.print()
    * 
    * @param args An array of any command-line arguments.  Java requires the main function include this, even if not used.
-   * @throws Exception Allows us to not worry about Exceptions in this function. Java requires the main functino include this, even if not used.
+   * @throws Exception Allows us to not worry about Exceptions in this function. Java requires the main function include this, even if not used.
    */
   public static void main(String[] args) throws Exception {
-        // complete this function to solve the problem
-  }
+    Scanner scanner = new Scanner(System.in);
 
+    System.out.println("How many kilometers did you run?");
+    double kilometers = Double.parseDouble(scanner.nextLine());
+
+    System.out.println("How many minutes did it take you?");
+    double minutes = Double.parseDouble(scanner.nextLine());
+
+    double miles = kilometers / 1.609344;
+    double hours = minutes / 60.0;
+    double mph = miles / hours;
+
+    System.out.println("Your average speed was " + mph + " miles per hour.");
+  }
 
 }

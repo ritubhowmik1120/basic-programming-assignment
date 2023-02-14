@@ -71,20 +71,17 @@ public class CompoundInflation_Test {
         for (String mockInput : this.mockInputs) {
             systemOutRule.clearLog(); // clear any previous output from the log
             systemInMock.provideLines(mockInput);
-            String expected = expectedOutputs[i];
             try {
                 CompoundInflation.main(args);
-                String output = systemOutRule.getLogWithNormalizedLineSeparator();
-                String[] lines = output.split("\n");
-                String actual = lines[1];
-                assertEquals("Given the input, '" + mockInput + "', expected the second line output to exactly match, '" + expected + "'.", expected, actual); // second line should match expected
+                String output = systemOutRule.getLogWithNormalizedLineSeparator().trim(); // trim extra white space (including line breaks) from output
+                String actual = expectedOutputs[i].trim(); // trim extra white space (including line breaks) from expected output
+                assertEquals("Given the input, '" + mockInput + "', expected the output to exactly match, '" + actual + "'.", actual, output);
                 i++;
+    
             }
             catch (Exception e) {
                 assertEquals("Expected the program never to crash... unfortunately, it did!", true, e); // program crashed
             }
         }
     }
-
-
-}
+} 
